@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "streamlit-drilldown"
+version = "0.1.0"
+description = "Drill down through linked Streamlit elements, one level at a time."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = [
+    # st.fragment(key=...) needs 1.63. The examples use st.echarts_chart (1.64).
+    "streamlit>=1.64",
+    "pandas",
+]
+
+[dependency-groups]
+dev = ["pytest", "numpy", "playwright", "av", "pillow"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["streamlit_drilldown"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
